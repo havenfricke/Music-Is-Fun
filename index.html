@@ -10,9 +10,26 @@
   <link rel="shortcut icon" href="https://bcw.blob.core.windows.net/public/img/9977764104160066" type="image/x-icon">
   <link rel="stylesheet" href="assets/style/main.css">
   <title>music-is-fun</title>
+  <style>
+    body.debug .container,
+    body.debug .container-fluid {
+      outline: 2px double blue;
+      outline-offset: -2px;
+    }
+
+    body.debug .row {
+      outline: 2px dashed rgba(255, 0, 0);
+      outline-offset: -2px;
+    }
+
+    body.debug [class*="col-"] {
+      outline: 2px dotted forestgreen;
+      outline-offset: -3px;
+    }
+  </style>
 </head>
 
-<body>
+<body class="">
   <header>
     <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select align-items-center">
       <a class="navbar-brand ms-3 d-flex align-items-center" href="#">
@@ -23,9 +40,10 @@
     </nav>
   </header>
   <main class="container-fluid">
-    <section class="row my-3">
-      <div class="col-lg-6 m-auto">
-        <form onsubmit="app.songsController.search(event)" class="d-flex align-items-center bg-dark elevation-2 rounded p-1 shadow">
+    <section class="row p-3">
+      <div class="col-lg-12 d-flex p-2 justify-content-start">
+        <form onsubmit="app.songsController.search(event)"
+          class="d-flex align-items-center bg-dark elevation-2 rounded p-1 shadow">
           <input type="text" class="form-control" name="query" placeholder="Search For Music" />
           <button class="btn btn-dark" type="submit">
             Search
@@ -35,15 +53,63 @@
     </section>
 
     <section class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <h3 class="text-center">Search Results</h3>
-        <div id="songs" class="col-12 m-0">
+        <div id="songs" class="card bg-dark col-12 order-2 p-2 m-0"
+          style="height: 60vh;width:100%;font:16px Arial, Serif;overflow:auto;">
+          <!-- api songs -->
+          <!-- <div onclick="" class="border bg-secondary card border-secondary">
+            <div class="d-flex text-center justify-content-center">
+              <img class="img-fluid p-2 col-6" src="https://m.media-amazon.com/images/I/61snhqynKLL._SX355_.jpg" alt="">
+            </div>
+            <div class="p-1 border-bottom border-secondary text-center">
+              <h5>2Pac</h5>
+              <h5>all eyes on me</h5>
+              <p>all eyes on me</p>
+            </div>
+          </div> -->
           <!-- api songs -->
         </div>
       </div>
-      <div class="col-lg-6">
-        <h3 class="text-center">Playlist</h3>
-        <div class="col-12 m-0" id="playlist">
+
+
+
+      <div class="col-lg-4">
+        <h3 class="text-center">Now Playing</h3>
+        <div id="current-song" class="col-12 order-1 m-0">
+          <!-- current song template -->
+          <!-- <div class="d-flex text-center justify-content-center">
+            <img class="img-fluid col-12" src="https://m.media-amazon.com/images/I/61snhqynKLL._SX355_.jpg" alt="">
+          </div>
+          <div class="p-3 text-center">
+            <h2>2Pac</h2>
+            <h4>all eyes on me</h4>
+            <p>all eyes on me</p>
+            <button class="col-6 p-1 rounded btn-success">Add to Playlist</button><button
+              class="col-6 p-1 rounded btn-danger">Remove
+              From
+              Playlist</button>
+          </div> -->
+          <!-- current song template -->
+        </div>
+      </div>
+
+
+      <div class="col-lg-4">
+        <h3 class="text-center">My Playlist</h3>
+        <div id="my-plalist" class="card bg-dark col-12 p-2 order-2 m-0"
+          style="height: 60vh;width:100%;font:16px Arial, Serif;overflow:auto;">
+          <!-- template for playlist -->
+          <div onclick="" class="border bg-secondary card border-secondary">
+            <div class="d-flex text-center justify-content-center">
+              <img class="img-fluid p-2 col-6" src="https://m.media-amazon.com/images/I/61snhqynKLL._SX355_.jpg" alt="">
+            </div>
+            <div class="p-1 border-bottom border-secondary text-center">
+              <h5>2Pac</h5>
+              <h5>all eyes on me</h5>
+              <p>all eyes on me</p>
+            </div>
+          </div>
           <!-- template for playlist -->
         </div>
       </div>

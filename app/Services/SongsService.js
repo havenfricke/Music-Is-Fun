@@ -24,7 +24,12 @@ class SongsService {
    * Retrieves the saved list of songs from the sandbox
    */
   async getMySongs() {
-    //TODO What are you going to do with this result
+    try {
+      /**@ts-ignore */
+      const res = await axios.get()
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   /**
@@ -32,9 +37,12 @@ class SongsService {
    * Afterwords it will update the store to reflect saved info
    * @param {string} id
    */
-  addSong(id) {
-    //TODO you only have an id, you will need to find it in the store before you can post it
-    //TODO After posting it what should you do?
+  async addSong(thisSong) {
+    const res = await sandBoxApi.post('/' + thisSong)
+    console.log('songsservice', res.data)
+    ProxyState.playlist = [...ProxyState.playlist, new Song(res.data)]
+    console.log(res.data);
+
   }
 
   /**
